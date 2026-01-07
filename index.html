@@ -37,6 +37,20 @@
       margin-bottom: 30px;
     }
 
+    /* Toggle button (hidden on desktop) */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: #cbd5f5;
+      font-size: 1.25rem;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+    }
+    .nav-toggle:focus { outline: 2px solid rgba(56,189,248,0.3); }
+    .nav-toggle:active { transform: translateY(1px); }
+
     .nav a {
       color: #cbd5f5;
       font-weight: 500;
@@ -145,6 +159,35 @@
         flex-direction: column-reverse;
         text-align: center;
       }
+
+      /* show hamburger, use sliding sidebar nav */
+      .nav-toggle { display: inline-flex; position: absolute; top: 18px; right: 20px; z-index: 80; }
+
+      .nav {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 260px;
+        max-width: 80%;
+        height: 100vh;
+        transform: translateX(100%);
+        transition: transform 250ms ease;
+        background: linear-gradient(180deg, rgba(2,6,23,0.98), rgba(30,41,59,0.98));
+        padding: 80px 18px 20px;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+        box-shadow: -12px 0 30px rgba(0,0,0,0.6);
+        z-index: 90;
+      }
+
+      .nav a { padding: 10px 8px; width: 100%; color: #e6f7ff; display: block; }
+      .nav.open { transform: translateX(0%); }
+
+      /* overlay behind sidebar */
+      .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 85; opacity: 0; transition: opacity 250ms ease; }
+      .nav-overlay.show { display: block; opacity: 1; }
     }
   </style>
 </head>
@@ -152,6 +195,8 @@
 
   <!-- ---------- Header ---------- -->
   <header>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+    <div class="nav-overlay" aria-hidden="true"></div>
     <nav class="nav">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -303,6 +348,48 @@
   <footer>
     <p>Designed & Built with ♥ by Guangsinlung Phaomei</p>
   </footer>
+
+  <script>
+    (function(){
+      const navToggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.nav');
+      const overlay = document.querySelector('.nav-overlay');
+      if(!navToggle || !nav) return;
+
+      function openNav(){
+        nav.classList.add('open');
+        overlay && overlay.classList.add('show');
+        navToggle.setAttribute('aria-expanded','true');
+        navToggle.innerHTML = '<i class="fa fa-times"></i>';
+        // prevent body scroll when nav open
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeNav(){
+        nav.classList.remove('open');
+        overlay && overlay.classList.remove('show');
+        navToggle.setAttribute('aria-expanded','false');
+        navToggle.innerHTML = '<i class="fa fa-bars"></i>';
+        document.body.style.overflow = '';
+      }
+
+      navToggle.addEventListener('click', () => {
+        if(nav.classList.contains('open')) closeNav(); else openNav();
+      });
+
+      overlay && overlay.addEventListener('click', closeNav);
+
+      // Close mobile nav when a nav link is clicked
+      document.querySelectorAll('.nav a').forEach(link => {
+        link.addEventListener('click', closeNav);
+      });
+
+      // Close with Escape key
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeNav();
+      });
+    })();
+  </script>
 
 </body>
 </html>
