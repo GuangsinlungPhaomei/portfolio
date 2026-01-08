@@ -8,8 +8,6 @@
   <meta property="og:title" content="GuangsinlungPhaomei | Portfolio">
   <meta property="og:description" content="CSE Student sharing projects and experience.">
   <meta property="og:type" content="website">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="627">
   <meta property="og:image:type" content="image/png">
 
   <title>Guangsinlung Phaomei | Portfolio</title>
@@ -123,6 +121,66 @@
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
+
+    /* ---------- Project Links ---------- */
+    .project-links {
+      margin-top: 12px;
+    }
+
+    .project-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: #38bdf8;
+      color: #020617;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .project-links a:hover {
+      background: #0ea5e9;
+    }
+
+
+    /* ---------- Certifications ---------- */
+    .cert-card {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .cert-icon {
+      font-size: 2rem;
+      color: #38bdf8;
+      margin-top: 4px;
+    }
+
+    .cert-card h3 {
+      margin-bottom: 4px;
+      font-size: 1.1rem;
+    }
+
+    .cert-card p {
+      font-size: 0.9rem;
+      color: #cbd5f5;
+    }
+
+    .cert-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.9rem;
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .cert-link:hover {
+      text-decoration: underline;
+    }
+
 
     /* ---------- Social & Buttons ---------- */
     .social-links {
@@ -265,23 +323,76 @@
   </section>
 
   <!-- ---------- Projects ---------- -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="card">
-      <h3>Restaurant Order Management System</h3>
-      <p>
-        A web-based application to manage restaurant orders efficiently.
-        Features include order tracking, menu management, and billing support.
-      </p>
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="card">
+    <h3>Restaurant Order Management System</h3>
+    <p>
+      A web-based application to manage restaurant orders efficiently.
+      Features include order tracking, menu management, and billing support.
+    </p>
+
+    <div class="project-links">
+      <a href="https://github.com/GuangsinlungPhaomei/Restuarants_orderManagement_projects" target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-globe"></i> View Project
+      </a>
     </div>
-    <div class="card">
-      <h3>Personal Portfolio Website</h3>
-      <p>
-        A responsive personal portfolio website built using HTML and CSS to
-        showcase my skills, projects, education, and contact information.
-      </p>
+  </div>
+
+  <div class="card">
+    <h3>Personal Portfolio Website</h3>
+    <p>
+      A responsive personal portfolio website built using HTML and CSS to
+      showcase my skills, projects, education, and contact information.
+    </p>
+
+    <div class="project-links">
+      <a href="https://guangsinlungphaomei.github.io/portfolio/"
+         target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-globe"></i> View Project
+      </a>
     </div>
-  </section>
+  </div>
+</section>
+
+
+  <!-- ---------- Certifications ---------- -->
+<section id="certifications">
+  <h2>Certifications</h2>
+
+  <div class="grid">
+
+    <div class="card cert-card">
+      <i class="fa-solid fa-certificate cert-icon"></i>
+      <div>
+        <h3>CCNA: Introduction to Networks.</h3>
+        <p>Offered by SR University through the Cisco Networking Academy program.</p>
+        <a href="https://drive.google.com/file/d/1UwMReIgQ28nDJBZ4d6Z0USb2BdVh2Vd5/view?usp=drive_link" target="_blank" class="cert-link">View Certificate</a>
+      </div>
+    </div>
+
+    <div class="card cert-card">
+      <i class="fa-solid fa-certificate cert-icon"></i>
+      <div>
+        <h3>CS250: Python for Data Science</h3>
+        <p>Awarded by Saylor.Org Academy</p>
+        <a href="https://drive.google.com/file/d/1CUIjaXPLxl7m9PPBGckCkPcTEy_SPdSB/view?usp=drive_link" target="_blank" class="cert-link">View Certificate</a>
+      </div>
+    </div>
+
+    <div class="card cert-card">
+      <i class="fa-solid fa-certificate cert-icon"></i>
+      <div>
+        <h3>Cloud Web Application Builder Training Badge</h3>
+        <p>Awarded by AWS Academy</p>
+        <a href="https://drive.google.com/file/d/1Lyy5dO6XWangy2P2Bx13crDl_oj7Jpqh/view?usp=drive_link" target="_blank" class="cert-link">View Certificate</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
   <!-- ---------- Education ---------- -->
   <section id="education">
